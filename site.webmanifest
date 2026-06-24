@@ -1,0 +1,14 @@
+{
+  "name": "McSqueeky — Premium Cleaning · Capital Region",
+  "short_name": "McSqueeky",
+  "description": "Premium recurring residential cleaning for the Capital Region. Warm, trustworthy, detail-obsessed — the cleaner you keep.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF6EF",
+  "theme_color": "#2E5A4C",
+  "icons": [
+    { "src": "/assets/favicon.png", "sizes": "64x64", "type": "image/png" },
+    { "src": "/assets/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/assets/logo-master.png", "sizes": "1024x1024", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

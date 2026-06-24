@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Get a Free Cleaning Quote · Capital Region (518) | McSqueeky™</title>
+  <meta name="description" content="Get a fast, free cleaning quote from McSqueeky. Tell us about your home and we'll send a clear estimate — recurring, deep clean, or move-in/move-out. Serving Albany, Colonie, Latham, Troy & the 518." />
+  <link rel="canonical" href="https://mcsqueeky.vercel.app/quote.html" />
+  <meta name="theme-color" content="#2E5A4C" />
+  <meta property="og:title" content="Get a Free Quote · McSqueeky™" />
+  <meta property="og:description" content="Tell us about your home and we'll send a clear estimate. No pressure, friendly humans." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mcsqueeky.vercel.app/quote.html" />
+  <link rel="icon" href="/assets/favicon.png" sizes="any" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="/" aria-label="McSqueeky home"><img class="brand-mark" src="/assets/logo.png" alt="McSqueeky logo" width="44" height="44" />McSqueeky<span class="tm">™</span></a>
+      <button class="nav-toggle" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false"><span></span></button>
+      <nav id="primary-nav" aria-label="Primary">
+        <span class="has-sub"><a href="/services.html">Services</a><span class="submenu"><a href="/recurring-cleaning.html">Recurring Cleaning</a><a href="/deep-cleaning.html">Deep Cleaning</a><a href="/move-in-move-out.html">Move-In / Move-Out</a><a href="/services.html">All services →</a></span></span>
+        <a href="/service-areas.html">Service Areas</a>
+        <a href="/about.html">About</a>
+        <a href="/faq.html">FAQ</a>
+        <a class="btn btn-primary nav-cta" href="/quote.html">Get my free quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="breadcrumb"><a href="/">Home</a> › Get a Quote</p>
+        <span class="eyebrow">Free &amp; no obligation</span>
+        <h1>Get your free cleaning quote</h1>
+        <p class="lede">Tell us a little about your home and we'll send a clear, friendly estimate — usually within one business day. No pressure, no phone tag.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:1rem">
+      <div class="wrap" style="display:grid;grid-template-columns:1.4fr .9fr;gap:2.4rem;align-items:start">
+        <!-- Form -->
+        <div class="form-card">
+          <form id="quote-form" novalidate>
+            <fieldset>
+              <legend style="font-family:var(--serif);font-size:1.3rem;margin-bottom:.8rem">Which service are you interested in?</legend>
+              <div class="choice-grid">
+                <label class="choice"><input type="radio" name="service" value="Recurring cleaning" checked /><span>🔁 Recurring cleaning</span></label>
+                <label class="choice"><input type="radio" name="service" value="Deep cleaning" /><span>✨ Deep cleaning</span></label>
+                <label class="choice"><input type="radio" name="service" value="Move-in / Move-out" /><span>📦 Move-in / Move-out</span></label>
+                <label class="choice"><input type="radio" name="service" value="One-time clean" /><span>🧽 One-time clean</span></label>
+                <label class="choice"><input type="radio" name="service" value="Rental / Airbnb turnover" /><span>🏡 Rental / Airbnb</span></label>
+                <label class="choice"><input type="radio" name="service" value="Office / commercial" /><span>🏢 Office / commercial</span></label>
+              </div>
+            </fieldset>
+
+            <div class="field-row">
+              <div class="field"><label for="name">Name <span class="req">*</span></label><input id="name" name="name" type="text" autocomplete="name" required /></div>
+              <div class="field"><label for="phone">Phone <span class="req">*</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" required /></div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label for="email">Email <span class="req">*</span></label><input id="email" name="email" type="email" autocomplete="email" required /></div>
+              <div class="field"><label for="city">City / town <span class="req">*</span></label>
+                <input id="city" name="city" list="cities" type="text" placeholder="e.g. Colonie" required />
+                <datalist id="cities"><option>Albany</option><option>Colonie</option><option>Latham</option><option>Guilderland</option><option>Delmar</option><option>Bethlehem</option><option>Loudonville</option><option>Troy</option><option>Cohoes</option><option>Clifton Park</option><option>Halfmoon</option></datalist>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label for="beds">Bedrooms</label><select id="beds" name="bedrooms"><option value="">Select…</option><option>Studio</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option></select></div>
+              <div class="field"><label for="baths">Bathrooms</label><select id="baths" name="bathrooms"><option value="">Select…</option><option>1</option><option>1.5</option><option>2</option><option>2.5</option><option>3</option><option>3+</option></select></div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label for="cadence">How often?</label><select id="cadence" name="cadence"><option value="">Not sure yet</option><option>Weekly</option><option>Bi-weekly (most popular)</option><option>Monthly</option><option>One-time</option></select></div>
+              <div class="field"><label for="timing">Ideal timing</label><select id="timing" name="timing"><option value="">Flexible</option><option>ASAP</option><option>Within 2 weeks</option><option>This month</option><option>Just exploring</option></select></div>
+            </div>
+            <div class="field"><label for="pets">Pets in the home?</label><input id="pets" name="pets" type="text" placeholder="e.g. 1 dog, 2 cats — or none" /></div>
+            <div class="field"><label for="message">Anything else we should know?</label><textarea id="message" name="message" placeholder="Condition notes, access instructions, add-ons (oven, fridge, interior windows), special requests…"></textarea></div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Send my free quote request</button>
+            <p class="form-note">By submitting, you agree to be contacted about your quote. We never share your info. See our <a href="/privacy.html">Privacy Policy</a>.</p>
+          </form>
+        </div>
+
+        <!-- Reassurance sidebar -->
+        <aside class="stack">
+          <div class="card">
+            <h3>What happens next</h3>
+            <div class="steps" style="margin-top:.8rem">
+              <div class="step"><h3 style="font-family:var(--sans);font-size:1rem">We review your home</h3><p style="font-size:.92rem">A real person reads your details — no bots, no runaround.</p></div>
+              <div class="step"><h3 style="font-family:var(--sans);font-size:1rem">You get a clear estimate</h3><p style="font-size:.92rem">Usually within one business day, with simple next steps.</p></div>
+              <div class="step"><h3 style="font-family:var(--sans);font-size:1rem">You pick a time</h3><p style="font-size:.92rem">Book when it suits you. First visit is often a deep-clean reset.</p></div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Prefer to talk?</h3>
+            <p class="muted">We're friendly, promise.</p>
+            <p style="margin:0"><a class="btn btn-ghost btn-block" href="tel:+13157754078">📞 Call (315) 775-4078</a></p>
+            <p style="margin:.6rem 0 0"><a class="btn btn-ghost btn-block" href="sms:+13157754078">💬 Text us</a></p>
+          </div>
+          <div class="note-banner">🛡️ Insured &amp; background-checked team · 100% make-it-right guarantee · family- &amp; pet-safe products.</div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-about"><a class="brand" href="/"><img class="brand-mark brand-mark--chip" src="/assets/logo.png" alt="" width="40" height="40" />McSqueeky<span class="tm">™</span></a><p>Premium recurring house cleaning for the Capital Region. The cleaner you keep.</p></div>
+        <div><h4>Services</h4><ul><li><a href="/recurring-cleaning.html">Recurring Cleaning</a></li><li><a href="/deep-cleaning.html">Deep Cleaning</a></li><li><a href="/move-in-move-out.html">Move-In / Move-Out</a></li><li><a href="/services.html">All Services</a></li></ul></div>
+        <div><h4>Company</h4><ul><li><a href="/about.html">About</a></li><li><a href="/service-areas.html">Service Areas</a></li><li><a href="/faq.html">FAQ</a></li><li><a href="/quote.html">Get a Quote</a></li></ul></div>
+        <div class="footer-contact"><h4>Contact</h4><ul><li><a href="tel:+13157754078">📞 (315) 775-4078</a></li><li><a href="mailto:hello@mcsqueeky.com">✉️ hello@mcsqueeky.com</a></li><li>📍 Serving the 518 · Capital Region, NY</li><li>🕗 Mon–Fri, 8am–6pm</li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year">2026</span> McSqueeky™. All rights reserved.</span><span><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></span></div>
+    </div>
+  </footer>
+  <script src="/script.js" defer></script>
+</body>
+</html>
