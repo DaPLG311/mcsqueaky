@@ -110,7 +110,7 @@ Quote-first, not phone-only. The journey baked into the site:
 | Placeholder | Where | Replace with |
 |---|---|---|
 | Phone `(315) 775-4078` | every footer/header/CTA + JSON-LD | real business line |
-| Email `hello@mcsqueaky.com` | footers, quote handler, JSON-LD | real inbox |
+| Email `bosslady@mcsqueaky.com` | footers, quote handler, JSON-LD | real inbox |
 | Hours `Mon–Fri 8am–6pm` | footers + JSON-LD | real hours |
 | Testimonials | homepage `#reviews` | real Google reviews |
 | `.media-frame` gradient panels | all pages | real free-license photos |

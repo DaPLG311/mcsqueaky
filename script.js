@@ -78,7 +78,7 @@
       var body = "New quote request from the McSqueaky website:\n\n" + lines.join("\n") + "\n";
 
       window.location.href =
-        "mailto:hello@mcsqueaky.com?subject=" +
+        "mailto:bosslady@mcsqueaky.com?subject=" +
         encodeURIComponent(subject) +
         "&body=" +
         encodeURIComponent(body);
@@ -87,7 +87,7 @@
       if (note) {
         note.innerHTML =
           "Opening your email app… if nothing happens, email us at " +
-          "<a href='mailto:hello@mcsqueaky.com'>hello@mcsqueaky.com</a> or call " +
+          "<a href='mailto:bosslady@mcsqueaky.com'>bosslady@mcsqueaky.com</a> or call " +
           "<a href='tel:+13157754078'>(315) 775-4078</a>.";
       }
     });
