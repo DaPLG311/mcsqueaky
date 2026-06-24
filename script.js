@@ -119,6 +119,17 @@
         .then(function (r) { return r.json(); })
         .then(function (json) {
           if (json && json.success) {
+            // Best-effort owner SMS via our Vercel function (no-op until env vars are set).
+            try {
+              var lead = {};
+              ["name", "phone", "email", "city", "service", "cadence", "timing", "pets", "message"]
+                .forEach(function (k) { lead[k] = fieldVal(data, k); });
+              fetch("/api/notify", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(lead)
+              }).catch(function () { /* SMS is best-effort; email already captured the lead */ });
+            } catch (e) { /* ignore */ }
             showSuccess(service);
           } else {
             throw new Error((json && json.message) || "Submission failed");
