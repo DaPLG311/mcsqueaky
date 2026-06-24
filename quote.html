@@ -50,6 +50,11 @@
         <!-- Form -->
         <div class="form-card">
           <form id="quote-form" novalidate>
+            <!-- Web3Forms (free lead capture) — paste your real access key from https://web3forms.com -->
+            <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY_HERE" />
+            <input type="hidden" name="from_name" value="McSqueaky Website" />
+            <!-- honeypot: bots fill this, humans never see it -->
+            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px" />
             <fieldset>
               <legend style="font-family:var(--serif);font-size:1.3rem;margin-bottom:.8rem">Which service are you interested in?</legend>
               <div class="choice-grid">
@@ -87,6 +92,15 @@
             <button type="submit" class="btn btn-primary btn-lg btn-block">Send my free quote request</button>
             <p class="form-note">By submitting, you agree to be contacted about your quote. We never share your info. See our <a href="/privacy.html">Privacy Policy</a>.</p>
           </form>
+
+          <!-- Success state (shown by script.js after a successful submission) -->
+          <div id="quote-success" hidden style="text-align:center;padding:1rem 0">
+            <div style="font-size:3.2rem;line-height:1">✅</div>
+            <h2 style="margin-top:.4rem">Thank you — your request is in!</h2>
+            <p class="lede" style="margin-inline:auto">A real person will review your home and get back to you with a clear estimate, usually within one business day.</p>
+            <p class="muted">Need us sooner? Call or text <a href="tel:+13157754078">(315) 775-4078</a> or email <a href="mailto:bosslady@mcsqueaky.com">bosslady@mcsqueaky.com</a>.</p>
+            <p style="margin-top:1.2rem"><a class="btn btn-ghost" href="/">Back to home</a></p>
+          </div>
         </div>
 
         <!-- Reassurance sidebar -->

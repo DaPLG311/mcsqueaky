@@ -39,22 +39,59 @@
   });
 
   // --- Quote form -> mailto (placeholder until a real form backend is wired) ---
-  // NOTE FOR JOHN: this opens the visitor's email app pre-filled. For tracked,
-  // reliable lead capture (and Google/Meta ads conversions), swap this for a
-  // form backend (Formspree / Netlify Forms / your CRM) — see BUILD-PACKET.md.
+  // Lead capture via Web3Forms (free, no server). Until a real access key is
+  // pasted into the hidden #access_key field in quote.html, this gracefully
+  // falls back to opening the visitor's email app so the form is never dead.
+  var WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+  var KEY_PLACEHOLDER = "WEB3FORMS_ACCESS_KEY_HERE";
+
   var form = document.querySelector("#quote-form");
   if (form) {
-    // Friendly labels for the fields we collect, in the order they appear.
     var LABELS = {
       service: "Service", name: "Name", phone: "Phone", email: "Email",
       city: "City/Town", bedrooms: "Bedrooms", bathrooms: "Bathrooms",
       cadence: "Frequency", timing: "Timing", pets: "Pets", message: "Notes"
     };
 
+    var getKey = function () {
+      var f = form.querySelector('[name="access_key"]');
+      return f ? (f.value || "").trim() : "";
+    };
+    var fieldVal = function (data, k) { return (data.get(k) || "").toString().trim(); };
+
+    // Fires a lead conversion if a tag manager / gtag is present. Safe no-op otherwise.
+    // When you set up Google Ads, this is the event to mark as a conversion.
+    var trackLead = function (service) {
+      try {
+        if (window.gtag) window.gtag("event", "generate_lead", { event_category: "quote", event_label: service });
+        if (window.dataLayer) window.dataLayer.push({ event: "generate_lead", service: service });
+        if (window.fbq) window.fbq("track", "Lead");
+      } catch (err) { /* tracking is best-effort */ }
+    };
+
+    var showSuccess = function (service) {
+      var success = document.querySelector("#quote-success");
+      if (success) { form.hidden = true; success.hidden = false; success.scrollIntoView({ behavior: "smooth", block: "center" }); }
+      trackLead(service);
+    };
+
+    var mailtoFallback = function (data, subject) {
+      var lines = [];
+      Object.keys(LABELS).forEach(function (k) { var v = fieldVal(data, k); if (v) lines.push(LABELS[k] + ": " + v); });
+      var body = "New quote request from the McSqueaky website:\n\n" + lines.join("\n") + "\n";
+      window.location.href = "mailto:bosslady@mcsqueaky.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+      var note = form.querySelector(".form-note");
+      if (note) note.innerHTML = "Opening your email app… if nothing happens, email <a href='mailto:bosslady@mcsqueaky.com'>bosslady@mcsqueaky.com</a> or call <a href='tel:+13157754078'>(315) 775-4078</a>.";
+    };
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      // Basic required-field guard
+      // Honeypot — silently drop bot submissions.
+      var bot = form.querySelector('[name="botcheck"]');
+      if (bot && bot.checked) return;
+
+      // Required-field guard
       var required = form.querySelectorAll("[required]");
       for (var i = 0; i < required.length; i++) {
         if (!required[i].value.trim()) {
@@ -65,31 +102,33 @@
       }
 
       var data = new FormData(form);
-      var name = (data.get("name") || "Website").toString().trim();
-      var service = (data.get("service") || "Cleaning").toString().trim();
-
-      var lines = [];
-      Object.keys(LABELS).forEach(function (key) {
-        var val = (data.get(key) || "").toString().trim();
-        if (val) lines.push(LABELS[key] + ": " + val);
-      });
-
+      var name = fieldVal(data, "name") || "Website";
+      var service = fieldVal(data, "service") || "Cleaning";
       var subject = "Free quote request — " + service + " (" + name + ")";
-      var body = "New quote request from the McSqueaky website:\n\n" + lines.join("\n") + "\n";
+      data.set("subject", subject);
 
-      window.location.href =
-        "mailto:bosslady@mcsqueaky.com?subject=" +
-        encodeURIComponent(subject) +
-        "&body=" +
-        encodeURIComponent(body);
+      var key = getKey();
+      // No real key yet → keep the form usable via email.
+      if (!key || key === KEY_PLACEHOLDER) { mailtoFallback(data, subject); return; }
 
-      var note = form.querySelector(".form-note");
-      if (note) {
-        note.innerHTML =
-          "Opening your email app… if nothing happens, email us at " +
-          "<a href='mailto:bosslady@mcsqueaky.com'>bosslady@mcsqueaky.com</a> or call " +
-          "<a href='tel:+13157754078'>(315) 775-4078</a>.";
-      }
+      var btn = form.querySelector('button[type="submit"]');
+      var btnText = btn ? btn.textContent : "";
+      if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
+
+      fetch(WEB3FORMS_ENDPOINT, { method: "POST", body: data, headers: { Accept: "application/json" } })
+        .then(function (r) { return r.json(); })
+        .then(function (json) {
+          if (json && json.success) {
+            showSuccess(service);
+          } else {
+            throw new Error((json && json.message) || "Submission failed");
+          }
+        })
+        .catch(function () {
+          if (btn) { btn.disabled = false; btn.textContent = btnText; }
+          var note = form.querySelector(".form-note");
+          if (note) note.innerHTML = "Hmm, that didn't go through. Please email <a href='mailto:bosslady@mcsqueaky.com'>bosslady@mcsqueaky.com</a> or call <a href='tel:+13157754078'>(315) 775-4078</a> and we'll take care of you.";
+        });
     });
   }
 

@@ -119,12 +119,21 @@ Quote-first, not phone-only. The journey baked into the site:
 
 ---
 
-## H. The #1 high-leverage upgrade (quote backend + ad tracking)
+## H. Free lead-capture backend — PRE-WIRED (just needs your key)
 
-The quote form currently opens the visitor's email app (`mailto:`) — fine for launch, but it **loses leads** and **can't fire ad conversions.** When ready, swap it for a real form backend so every submission is captured server-side and a Google/Meta **conversion event** fires on submit:
-- Easiest: **Formspree** or **Netlify Forms** (change the `<form>` action; remove the mailto handler in `script.js`)
-- Then add Google Tag / Meta Pixel + a conversion on the quote "thank-you" state
+The quote form is already wired to **[Web3Forms](https://web3forms.com)** (free, unlimited, no server). It only needs your access key to go live:
+1. Go to [web3forms.com](https://web3forms.com), enter **bosslady@mcsqueaky.com**, verify, copy the **access key**.
+2. In `quote.html`, replace `WEB3FORMS_ACCESS_KEY_HERE` (hidden `access_key` field) with your real key.
+3. Push. Done — every submission now emails bosslady@mcsqueaky.com, shows the on-page "✅ Thank you" success state, and **does not reload or lose the lead.**
+
+Until the key is set, the form **safely falls back** to opening the visitor's email app, so it's never dead. There's also a hidden honeypot field for spam protection.
+
+**Conversion tracking (already stubbed):** on a successful submit, `script.js` fires `generate_lead` to `gtag`/`dataLayer` and `Lead` to `fbq` if present. To turn it on:
+- Add your **Google Tag (gtag.js)** or **GTM** snippet + **Meta Pixel** to each page `<head>`.
+- In Google Ads, mark `generate_lead` as a **conversion**.
 - This makes paid ads measurable — the difference between guessing and scaling.
+
+**Optional:** Web3Forms can also pipe leads into a Google Sheet (Integrations → Google Sheets) for a free CRM/intake log.
 
 *(This mirrors The G Code's parked "lead form + conversion tag" item — same play, do it here too.)*
 
