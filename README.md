@@ -1,9 +1,9 @@
-# McSqueeky™
+# McSqueaky™
 
 Premium recurring residential cleaning for the 518 / Capital Region, NY.
 Marketing site — static HTML/CSS/JS, **no build step**.
 
-🔗 Production: https://mcsqueeky.vercel.app
+🔗 Production: https://mcsqueaky.com
 
 ## Stack
 - Plain HTML + `styles.css` + `script.js`

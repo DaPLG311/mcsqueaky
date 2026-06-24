@@ -1,4 +1,4 @@
-# McSqueeky™ — V1 Founder Build Packet
+# McSqueaky™ — V1 Founder Build Packet
 
 *Premium recurring residential cleaning · 518 / Capital Region, NY*
 *Generated from the V3 THOR Bounce Pack. This is the working handoff doc for John / the operator side.*
@@ -62,7 +62,7 @@ Quote-first, not phone-only. The journey baked into the site:
 
 **Referral engine:** simple double-sided referral; prompt recurring clients (your best referral base) after a great clean.
 
-**Existing-customer upgrade plan (because McSqueeky already operates):**
+**Existing-customer upgrade plan (because McSqueaky already operates):**
 - Convert current one-time/ad-hoc clients → recurring plans
 - Ask your happiest current clients for Google reviews first
 - Identify best clients by geography/frequency/ease/profitability
@@ -110,7 +110,7 @@ Quote-first, not phone-only. The journey baked into the site:
 | Placeholder | Where | Replace with |
 |---|---|---|
 | Phone `(315) 775-4078` | every footer/header/CTA + JSON-LD | real business line |
-| Email `hello@mcsqueeky.com` | footers, quote handler, JSON-LD | real inbox |
+| Email `hello@mcsqueaky.com` | footers, quote handler, JSON-LD | real inbox |
 | Hours `Mon–Fri 8am–6pm` | footers + JSON-LD | real hours |
 | Testimonials | homepage `#reviews` | real Google reviews |
 | `.media-frame` gradient panels | all pages | real free-license photos |
@@ -132,4 +132,4 @@ The quote form currently opens the visitor's email app (`mailto:`) — fine for 
 
 ## I. How to ship changes
 
-Static site, no build. Edit files → `git push origin main` → Vercel auto-deploys to `https://mcsqueeky.vercel.app`. That's it.
+Static site, no build. Edit files → `git push origin main` → Vercel auto-deploys to `https://mcsqueaky.com`. That's it.
